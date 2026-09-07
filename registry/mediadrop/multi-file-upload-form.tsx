@@ -106,16 +106,24 @@ export default function MultiFileUploadForm({
 									aria-label={`Uploading ${file.name}`}
 									aria-valuemin={0}
 									aria-valuemax={100}
-									aria-valuenow={Math.round(
-										(file.progress.loaded / file.progress.total) * 100,
-									)}
+									aria-valuenow={
+										file.progress.total > 0
+											? Math.round(
+													(file.progress.loaded / file.progress.total) * 100,
+												)
+											: undefined
+									}
 								>
 									<div
 										className="h-full bg-primary transition-all"
 										style={{
-											width: `${Math.round(
-												(file.progress.loaded / file.progress.total) * 100,
-											)}%`,
+											width:
+												file.progress.total > 0
+													? `${Math.round(
+															(file.progress.loaded / file.progress.total) *
+																100,
+														)}%`
+													: "0%",
 										}}
 									/>
 								</div>

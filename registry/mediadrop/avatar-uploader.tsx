@@ -90,7 +90,7 @@ export default function AvatarUploader({
 						aria-valuemin={0}
 						aria-valuemax={100}
 						aria-valuenow={
-							current.progress?.total
+							current.progress?.total && current.progress.total > 0
 								? Math.round(
 										(current.progress.loaded / current.progress.total) * 100,
 									)
